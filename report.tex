@@ -1,5 +1,8 @@
 \documentclass{article}
 
+\usepackage{lipsum}
+\usepackage{url}
+
 \begin{document}
 
 %default title page properties
@@ -14,11 +17,24 @@
 
     \begin{center}
         \line(1,0){300} \\ 
-        \huge{\bfseries Evilsocket}
+        
+        \huge{\bfseries Activities Report}\\
+        \textsc{\normalsize \\Evilsocket \\20th march 2020 - 20th april 2020}
+        \line(1,0){300} \\ 
     \end{center}
 
+    \vspace{10cm}
+
+    \begin{flushright}
+       \textsc{\normalsize Confidential\\Document \#1238193812} 
+    \end{flushright}
+    
 \end{titlepage}
 
-Hello from the other side.
+\tableofcontents
+\section{Introduction}\label{sec:intro}
+\lipsum{10}
+\url{https://www.unisa.it}
 
+\subsection{Paragraph}
 \end{document}
