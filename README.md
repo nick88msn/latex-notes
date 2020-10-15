@@ -7,7 +7,19 @@ See [References](#references) to find more.
 1. Add the [title page](#default-title-page)
 1. Add sections, margins and page numbers
 
-## Document classes
+# Setup your text editor
+* **Vim**
+    * vim does not detect the filetype of .tex file but the syntax
+      is detected. Of course you can detect the file extension and add some keybinding
+      to compile the file and open a pdf editor or to just recompile as follow:
+      ```Vimscript
+      autocmd BufNewFile,BufRead *.tex  nnoremap <C-P> :!pdflatex -output-directory=. -jobname=document % && zathura document.pdf & disown <CR>
+      autocmd BufNewFile,BufRead *.tex  nnoremap <C-B> :!pdflatex -output-directory=. -jobname=document % <CR>
+      ```
+* **VsCode**
+    * [James Yu - Latex Workshop Extension](https://github.com/James-Yu/LaTeX-Workshop)
+
+# Document classes
 * book -> book default class has two-sides per page
 * report -> report has no \part divisions
 * article -> articles have no \part or \chapter divisions
