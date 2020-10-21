@@ -3,6 +3,11 @@
 \usepackage{lipsum}
 \usepackage{url}
 
+% Graphics dependencies
+\usepackage{graphicx}   % allows us to import images
+\usepackage{float}      % allows us to control of float position
+\usepackage[hidelinks]{hyperref} % Allows for clickable references
+
 \begin{document}
 
 %default title page properties
@@ -31,17 +36,70 @@
     
 \end{titlepage}
 
+%Executive
+\pagenumbering{roman}
+\section*{Executive Summary}
+During the last year we develop some skills and destroyed some people.
+\addcontentsline{toc}{section}{\numberline{}Executive Summary}
+\cleardoublepage
+
+% Another section before ToC
+\section*{Acknowledgements}
+Thank you
+\addcontentsline{toc}{section}{\numberline{}Acknowledgements}
+\cleardoublepage
+
+% List of figures, list of tables
+\listoffigures
+\addcontentsline{toc}{section}{\numberline{}List of Figures}
+\cleardoublepage
+
+\listoftables
+\addcontentsline{toc}{section}{\numberline{}List of Tables}
+\cleardoublepage
+
 %ToC
 \tableofcontents
+\thispagestyle{empty}
+\cleardoublepage
 
 %First Section
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \section{Introduction}\label{sec:intro}
 \lipsum{10}
+\subsection{State of the art}
+\lipsum{6}
 \url{https://www.unisa.it}
 
 %Second Section
-\section{State of the art}\label{sec:soa}
+\section{Main Content}\label{sec:soa}
 \lipsum{6}
+\subsection{Paragraph}\label{sec:par1}
 
+% page references
+As detailed on page \pageref{sec:intro} everything is
+\lipsum{3}
 
+% Adding a figure
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=1in]{Figures/wallpaper.png}
+    \caption[Optional caption]{Real, local caption}
+    \label{fig:fig1}
+\end{figure}
+As detailed in \ref{fig:fig1} the iconography of this label is labelled
+as discussed.
+
+% our first table
+\begin{table}[H]
+    \centering
+    \label{tab:table1}
+    \caption[This is optional caption, without reference]{Local caption, with reference}
+    \begin{tabular}{ l c r }
+        \bfseries{Date} & Subject & Score \\ \hline
+        April & Name & 22 \\
+        June & Name 2 & 23
+    \end{tabular}
+\end{table}
 \end{document}
