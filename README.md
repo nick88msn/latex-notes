@@ -377,6 +377,54 @@ For more about bibliography management and citation [go here](https://en.wikiboo
 \pageref{sec:Introduction}
 ```
 
+# Lists
+Lists in LaTeX are simple but verbose.
+* To create a unordered list:
+```Latex
+\begin{itemize}
+    \item Item 1
+    \item Item 2
+\end{itemize}
+```
+  Of course we can create sublist nesting another itemize element
+
+* To create an ordered list:
+```Latex
+\begin{enumerate}
+    \item Item 1
+    \item Item 2
+\end{enumerate}
+```
+  Of course we can nest an ordered list inside an unordered one and the opposite.
+
+    ```Latex
+    \begin{itemize}
+        \item First Item
+        \item Second Line, long and hope this will wrap to the second line indenting.
+        \begin{itemize}
+                \item First Sub bullet item
+                \item[Title] Second one
+        \end{itemize}
+        \begin{enumerate}
+            \item Number One Item
+            \begin{enumerate}
+                    \item Sub number
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
+    ```
+
+# Math equations
+To add a math equation we just need to wrap the equation inside $.
+For example:
+
+```Latex
+I can write some math in line with text $E=mc^2$ if I wanted to.
+Or I can write some equation in a new line like this $$E=mc^2$$ if I wanted to.
+```
+
+LaTeX has seen great success based on its math features. Find more [here](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+
 # Acknowledgements
 * [Alexander Baran-Harper](https://www.youtube.com/channel/UC_aQTJgfrnCb8coPbZ5cgJw) Youtube Channel
 * [Ceu.hu](http://www.personal.ceu.hu/tex/latex.htm)

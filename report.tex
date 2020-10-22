@@ -87,6 +87,10 @@ As detailed on page \pageref{sec:intro} everything is already
 discussed in \textcite{test} \LaTeX{} rocks.
 \lipsum{3}
 
+% math equations
+I can write some math equation in line like this $E=mc^2$ if I wanted to.
+Or set the equation in a new line like this $$E=mc^2$$ if I needed to.
+
 % Adding a figure
 \begin{figure}[H]
     \centering
@@ -112,7 +116,25 @@ as discussed.
 \cleardoublepage
 \printbibliography
 \addcontentsline{toc}{section}{\numberline{}Bibliography}
+\cleardoublepage
 
+\appendix
+\thispagestyle{empty}
+\section{Appendix 1}
+Content here.
+Main List:
+\begin{itemize}
+    \item First Item
+    \item Second Line, long and hope this will wrap to the second line indenting.
+    \begin{itemize}
+            \item First Sub bullet item
+            \item[Title] Second one
+    \end{itemize}
+    \begin{enumerate}
+        \item Number One Item
+        \begin{enumerate}
+                \item Sub number
+        \end{enumerate}
+    \end{enumerate}
+\end{itemize}
 \end{document}
-
-
