@@ -109,18 +109,20 @@ Some examples:
 
 ## LaTeX Line and Page Breaking
 
-* \\ start a new paragraph.
-* \\* start a new line but not a new paragraph.
-* \- OK to hyphenate a word here.
-* \cleardoublepage flush all material and start a new page, start new odd numbered page.
-* \clearpage plush all material and start a new page.
-* \hyphenation enter a sequence pf exceptional hyphenations.
-* \linebreak allow to break the line here.
-* \newline request a new line.
-* \newpage request a new page.
-* \nolinebreak no line break should happen here.
-* \nopagebreak no page break should happen here.
-* \pagebreak encourage page break. 
+Sometimes we want that a certain document class (section, paragraph, subsection etc.)
+starts at a new page. We have several options, the main ones are:
+* \\\\                  start a new paragraph.
+* \\\\*                 start a new line but not a new paragraph.
+* \\-                   OK to hyphenate a word here.
+* \\cleardoublepage     flush all material and start a new page, start new odd numbered page.
+* \\clearpage           plush all material and start a new page.
+* \\hyphenation         enter a sequence pf exceptional hyphenations.
+* \\linebreak           allow to break the line here.
+* \\newline             request a new line.
+* \\newpage             request a new page.
+* \\nolinebreak         no line break should happen here.
+* \\nopagebreak         no page break should happen here.
+* \\pagebreak           encourage page break. 
 
 * see [here](http://www.personal.ceu.hu/tex/breaking.htm) for more
 
@@ -145,6 +147,162 @@ The code is the following:
 \begin{flushright}  %ruggedleft
 ```
 
+# Table of Contents
+
+Usually we add a table of contents between the **Title** and the first **Section**.
+* First we add \tableofcontents inside our document: 
+```Latex
+\documentclass{article}
+\begin{document}
+\title{Report on activites}
+\author{Evilsocket}
+\date{\today}
+\maketitle
+\tableofcontents
+\section{Introduction}
+    Content goes here.
+\subsection{State of the art}
+\end{document}
+\tableofcontents
+```
+* Then, we add some *style adjustements* to our *ToC*:
+    * First we want to remove the page number under the toc and 
+      start the counter after the *ToC*
+        * To remove the counter, we add the following right after the \tableofcontents
+          **\thispagestyle{empty}**
+    * Then, we want to reset our page counter on the first section
+        * So we add \setcounter{page}{1} before the first \section
+    * If we want to add an Executive Summary, or an Abstract or Acknowledgements we usually put these sections 
+      before the ToC. Adding sections before ToC gives us some issues:
+        1. We have numbered sections before the ToC and our first section will start at 2. or more
+            * To remove a counter from a section, as detailed [before](#document-structure), we can just add an \* to the section
+              declaration (i.e. \section*{Summary})
+            * Removing the counter from a section makes also disappear such section from the ToC in order to add a section into the
+              ToC manually we need to add the following command:
+                * \addcontentsline{toc}{section}{\numberline{}Summary} 
+        1. These section prior to the ToC have page numbers and do not appear in the ToC that is generated after them.
+            * We can either remove the pagenumber adding an empty pagestyle or changing the pagenumbering from arabic to roman if we want to add multiple sections (list of figures, list of tables etc) before the ToC: 
+                \pagenumbering{roman}
+
+* The final code is something like this:
+
+    ```Latex
+    %Executive
+    \pagenumbering{roman}
+    \section*{Executive Summary}
+    During the last year we develop some skills and destroyed some people.
+    \addcontentsline{toc}{section}{\numberline{}Executive Summary}
+    \cleardoublepage
+
+    % Another section before ToC
+    \section*{Acknowledgements}
+    Thank you
+    \addcontentsline{toc}{section}{\numberline{}Acknowledgements}
+    \cleardoublepage
+
+    % List of figures, list of tables
+    \listoffigures
+    \addcontentsline{toc}{section}{\numberline{}List of Figures}
+    \cleardoublepage
+
+    \listoftables
+    \addcontentsline{toc}{section}{\numberline{}List of Tables}
+    \cleardoublepage
+
+    %ToC
+    \tableofcontents
+    \thispagestyle{empty}
+    \cleardoublepage
+
+    %First Section
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    \section{Introduction}\label{sec:intro}
+    \lipsum{10}
+    \subsection{State of the art}
+    \lipsum{6}
+    ```
+
+# Figures
+1. **Import packages**  
+    To use figures inside a Latex document we need to add some packages:
+    * _graphicx_ : let us import images inside the document \usepackage{graphicx}
+    * _float_ : let us control the float position of the image
+1. **Add figure inside the body of the document**  
+    We add a figure inside the content of our document with a begin and an end declaration:
+    * ```Latex
+      \begin{figure}[H]     
+        % [H] means we want the figure to be positioned here, in this specific part of the document
+        ......
+      \end{figure} 
+       ```
+1. We add figure options and front stuffs:
+    * ```Latex
+      \centering    % let us center the image
+      \includegraphics[height=1in]{uri://imgage.jpg}    % add image options and file position
+      \caption[Optional]{Real}  % Fig caption, the real one goes under the image, the optional one goes into the Table of Figures
+      \label{fig:label}    % let us reference the figure later inside the content 
+      ``` 
+
+## List of Figures
+List of Figures are as easy to build as the Table of contents.
+We add the command \listoffigures in the position we want to add the list.
+Usually we add it after the ToC and before the first section.
+
+To include the list of figure inside the Summary we can just add it manually as we did with the summary.  
+    
+ ```Latex
+%...
+\listoffigures
+\addcontentsline{toc}{section}{\numberline{}List of figures}
+%...
+```
+
+# Tables
+To create a table we declare the table with the following commands
+```Latex
+\begin{table}
+%...table options and content goes here
+\end{table}
+```
+* **Options & Content**
+    * Options
+        * Table position: center, right, left (i.e. \centering)
+        * Table label: use it to reference the table later (\label{tab:label})
+        * Table caption: use it to add a table caption and a caption in the list of tables (\caption[Optional]{Real})
+    * Content  
+      Contents goes inside the command \begin{tabular}.
+      Latex adds content in a text structured way inserting one line of the table at the time with an & as column separator.
+      To add a new row don't forget to add \\\\ at the end of the previous one.
+      \\\hline adds a border under the row.
+      We can use some online generator or create a macro to generate a table.
+      If we want to copy and paste from another source (excel, word, google sheets or html) we shoud use a vim macro or a generator.
+      An example of table is the following:
+
+    ```Latex
+    \begin{table}[H]
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{\#} & \textbf{Subject} & \textbf{Score} & \textbf{Date} & \textbf{Student} \\ \hline
+    1           & Math             & 28             & 22/10/2020    & John Doe         \\ \hline
+    2           & Math             & 22             & 22/10/2020    & Mark Smith       \\ \hline
+    3           &                  &                &               &                  \\ \hline
+    \end{tabular}
+    \end{table}
+    ```
+    This is the preview in markdown:
+
+    | # | Subject | Score |    Date    |   Student  |
+    |:-:|:-------:|:-----:|:----------:|:----------:|
+    | 1 |   Math  |   28  | 22/10/2020 |  John Doe  |
+    | 2 |   Math  |   22  | 22/10/2020 | Mark Smith |
+    | 3 |         |       |            |            |
+
+## List of Tables
+We just do what we did with the [List of Figures](#list-of-figures) using the command \listoftables
+
+# Hyperlinks
+
 # References
 * [Alexander Baran-Harper](https://www.youtube.com/channel/UC_aQTJgfrnCb8coPbZ5cgJw) Youtube Channel
-
+* [Ceu.hu](http://www.personal.ceu.hu/tex/latex.htm)
