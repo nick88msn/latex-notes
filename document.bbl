@@ -1,0 +1,47 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{test}{book}{}
+      \name{author}{1}{}{%
+        {{hash=318b2739ddc2c16c97b33c9b04b79f3e}{%
+           family={Me},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsewhere}%
+      }
+      \strng{namehash}{318b2739ddc2c16c97b33c9b04b79f3e}
+      \strng{fullhash}{318b2739ddc2c16c97b33c9b04b79f3e}
+      \strng{bibnamehash}{318b2739ddc2c16c97b33c9b04b79f3e}
+      \strng{authorbibnamehash}{318b2739ddc2c16c97b33c9b04b79f3e}
+      \strng{authornamehash}{318b2739ddc2c16c97b33c9b04b79f3e}
+      \strng{authorfullhash}{318b2739ddc2c16c97b33c9b04b79f3e}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Book}
+      \field{year}{2020}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

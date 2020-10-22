@@ -1,12 +1,17 @@
 \documentclass{article}
 
+% Preamble
 \usepackage{lipsum}
 \usepackage{url}
 
-% Graphics dependencies
+% Graphics Preamble
 \usepackage{graphicx}   % allows us to import images
 \usepackage{float}      % allows us to control of float position
 \usepackage[hidelinks]{hyperref} % Allows for clickable references
+
+% Bibliography Preamble
+\usepackage[backend=biber]{biblatex}
+\addbibresource{my.bib}
 
 \begin{document}
 
@@ -78,7 +83,8 @@ Thank you
 \subsection{Paragraph}\label{sec:par1}
 
 % page references
-As detailed on page \pageref{sec:intro} everything is
+As detailed on page \pageref{sec:intro} everything is already
+discussed in \textcite{test} \LaTeX{} rocks.
 \lipsum{3}
 
 % Adding a figure
@@ -102,4 +108,11 @@ as discussed.
         June & Name 2 & 23
     \end{tabular}
 \end{table}
+
+\cleardoublepage
+\printbibliography
+\addcontentsline{toc}{section}{\numberline{}Bibliography}
+
 \end{document}
+
+

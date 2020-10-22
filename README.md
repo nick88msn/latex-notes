@@ -298,11 +298,86 @@ To create a table we declare the table with the following commands
     | 2 |   Math  |   22  | 22/10/2020 | Mark Smith |
     | 3 |         |       |            |            |
 
+    * Latex tables options and formatting options are a huge topic see [here](https://en.wikibooks.org/wiki/LaTeX/Tables) for some documentation
+
 ## List of Tables
 We just do what we did with the [List of Figures](#list-of-figures) using the command \listoftables
 
-# Hyperlinks
+# Hyperlink
+To make the document interactive and let us click on references, table of contents, and urls we need to add a package:
+* \usepackage[hidelinks]{hyperref}    % to auto delete all the links formatting (similar to an a tag in html) 
 
 # References
+## Bibliographies
+To manage references we need to add another program. Depending on our setup and our tastes we could use one of the many 
+Bibliography Managers out there such as:
+* Mendeley
+* Biber
+* BibLatex
+* BibDesk
+* Zotero
+
+Find a complete comparison of Reference Management Software [here](https://en.wikipedia.org/wiki/Comparison_of_reference_management_software)
+
+[What is the logic behind bibliographies in Latex?](https://www.youtube.com/watch?v=46piog3Fzp4)
+Well first we probably want that every time we look at some articles or books we don't want to look
+back again to it to cite in our work. So we need a file with all the works structured with all the information
+and with some unique tags to retrieve it easily:
+
+```Bibliography
+    @book{test,
+            author="Doe, John",
+            title="This is a Book",
+            year="2017",
+            publisher="Elsevhere"
+    }
+```
+
+1. To compile this file in Latex we need to install the software. 
+   In Ubuntu based distro is already installed with texlive-most package.
+   On other distros, such as Arch Linux, we need to install as a separate program:
+    ```Shell
+    sudo pacman -S biber
+    ```
+1. To use biber in latex we need to add the package in the Preamble
+    ```Latex
+    % Bibliography Preamble
+    \usepackage[backend=biber, style=authouryear-icomp]{biblatex}
+    % Link to the bib file
+    \addbibresource{bibliography.bib}
+    
+    ......
+    %Content here
+    .....
+    \printbibliography
+    ```
+
+1. Then, we need to cite something from our bib file:
+```Latex
+\textcite{test}
+```
+
+1. Finally we can create the bibliography with the following command:
+```Shell
+biber document # with document.tex the file to compile
+```
+
+For more about bibliography management and citation [go here](https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management)
+
+## In Page references
+
+* Internal reference 
+    ```Latex
+    \ref{fig:figure1} 
+    \ref{tab:table1}
+    ```
+
+* Page reference 
+```Latex
+\pageref{sec:Introduction}
+```
+
+# Acknowledgements
 * [Alexander Baran-Harper](https://www.youtube.com/channel/UC_aQTJgfrnCb8coPbZ5cgJw) Youtube Channel
 * [Ceu.hu](http://www.personal.ceu.hu/tex/latex.htm)
+* [Wikibooks](https://en.wikibooks.org/wiki/LaTeX/)
