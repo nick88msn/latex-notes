@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.10.5)  20 OCT 2020 14:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.10.5)  21 OCT 2020 09:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -289,11 +289,11 @@ l.70 \lipsum{
              10} [1
 
 ] [2] [3] [4] [5]
-<Figures/wallpaper.png, id=101, 6038.56pt x 6038.56pt>
+<Figures/wallpaper.png, id=101, 3854.4pt x 2168.1pt>
 File: Figures/wallpaper.png Graphic file (type png)
 <use Figures/wallpaper.png>
 Package pdftex.def Info: Figures/wallpaper.png  used on input line 87.
-(pdftex.def)             Requested size: 72.23845pt x 72.26999pt.
+(pdftex.def)             Requested size: 128.44832pt x 72.26999pt.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 105.
  [6 <./Figures/wallpaper.png>] [7]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
@@ -318,7 +318,7 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on ./document.pdf (13 pages, 48786620 bytes).
+Output written on ./document.pdf (13 pages, 405402 bytes).
 PDF statistics:
  138 PDF objects out of 1000 (max. 8388607)
  115 compressed objects within 2 object streams
